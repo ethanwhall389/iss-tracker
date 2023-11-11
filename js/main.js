@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(res);
             })
             .catch( (err) => {
-                UI.displayLocation('an unidentifiable land mass or ocean.');
+                UI.displayLastKnownLocation();
                 //display last known country.
             })
     })
@@ -21,11 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function loadInfo (data) {
     UI.updateIssCoordinates(data);
-    console.log(data);
+    
     const distance = Calculate.calcDistance(data.latitude, data.longitude, 34.885740, -82.407650);
     const distanceKm = Convert.toKm(distance);
     UI.updateDistance(distanceKm);
+    
     const direction = Calculate.calcDirection(-82.407650, data.longitude);
     UI.updateDirection(direction);
-    UI.updateSpeed(data);
+    
+    UI.updateSpeed(data.velocity);
 }

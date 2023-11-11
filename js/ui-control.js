@@ -33,13 +33,14 @@ export default class UI {
     static updateSpeed (data) {
         const speedCont = document.querySelector('.speed-container');
         const speedElem = document.createElement('p');
-        speedElem.textContent = `${Math.round(data.velocity).toLocaleString()} Km/h`;
+        speedElem.textContent = `${Math.round(data).toLocaleString()} Km/h`;
 
         speedCont.appendChild(speedElem);
 
     }
 
-    static displayLocation (res) {
+    static displayLocation (res) {  
+        lastKnownLoc = res;
         const locationContainer = document.querySelector('.location-container');
         const locationElem = document.createElement('p');
         locationElem.textContent = `The ISS is currently over ${res}`;
@@ -47,7 +48,21 @@ export default class UI {
         locationContainer.appendChild(locationElem);
     }
 
+    static displayLastKnownLocation () {
+        const locationContainer = document.querySelector('.location-container');
+        const locationElem = document.createElement('p');
+        locationElem.textContent = 'The ISS is currently over an unidentifiable land mass or ocean.'
+        const lastLocElem = document.createElement('p');
+        locationContainer.appendChild(locationElem);
+        if (lastKnownLoc !== undefined) {
+            lastLocElem.textContent = `Last known location: ${lastKnownLoc}.`
+            locationContainer.appendChild(lastLocElem);
+        }
+    }
+
     static displayLocationError () {
         
     }
 }
+
+let lastKnownLoc;
