@@ -29,4 +29,25 @@ export default class UI {
         directionElem.textContent = message;
         distanceContainer.appendChild(directionElem);
     }
+
+    static updateSpeed (data) {
+        const speedCont = document.querySelector('.speed-container');
+        const speedElem = document.createElement('p');
+        speedElem.textContent = `${Math.round(data.velocity).toLocaleString()} Km/h`;
+
+        speedCont.appendChild(speedElem);
+
+    }
+
+    static displayLocation (res) {
+        const locationContainer = document.querySelector('.location-container');
+        const locationElem = document.createElement('p');
+        locationElem.textContent = `The ISS is currently over ${res}`;
+
+        locationContainer.appendChild(locationElem);
+    }
+
+    static displayLocationError () {
+        
+    }
 }
