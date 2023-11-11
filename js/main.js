@@ -4,20 +4,21 @@ import UI from "./ui-control.js";
 import Convert from "./convert-units.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetchIss()
-    .then( (res) => { 
-        loadInfo(res) 
-        fetchGeocode(res.latitude, res.longitude)
-            .then( (res) => {
-                UI.displayLocation(res.address.country);
-                console.log(res);
-            })
-            .catch( (err) => {
-                UI.displayLastKnownLocation();
-                //display last known country.
-            })
-    })
+    loadPage();
 });
+
+const bttnRefresh = document.querySelector('#bttn-refresh');
+bttnRefresh.addEventListener('click', () => {
+    UI.clearPage();
+    loadPage();
+});
+
+function loadPage () {
+    fetchIss ()
+    .then( (result) => {
+        loadInfo(result)
+    })
+}
 
 function loadInfo (data) {
     UI.updateIssCoordinates(data);
@@ -30,4 +31,14 @@ function loadInfo (data) {
     UI.updateDirection(direction);
     
     UI.updateSpeed(data.velocity);
+
+    fetchGeocode(data.latitude, data.longitude)
+    .then( (result) => {
+        UI.displayLocation(result.address.country);
+        console.log(result);
+    })
+    .catch( (err) => {
+        UI.displayLastKnownLocation();
+        //display last known country.
+    })
 }

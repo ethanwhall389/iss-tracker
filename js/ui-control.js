@@ -1,15 +1,24 @@
+// all dynamic elements are given a class of dynamic
+// loop through all elements with that class and remove them
+
 export default class UI {
+    static clearPage () {
+        const elements = document.querySelectorAll('.dynamic');
+        elements.forEach( (elem) => {
+            elem.remove();
+        })
+
+    }
+    
     static updateIssCoordinates (data) {
         const latContainer = document.querySelector('.lat-container');
         const lonContainer = document.querySelector('.lon-container');
         let lat;
         let lon;
-        if (lat !== null && lon !== null) {
-            latContainer.removeChild(latContainer.lastChild);
-            lonContainer.removeChild(lonContainer.lastChild);
-        }
         lat = document.createElement('p');
+        lat.classList.add('dynamic');
         lon = document.createElement('p');
+        lon.classList.add('dynamic');
         lat.textContent = data.latitude;
         lon.textContent = data.longitude;
         latContainer.appendChild(lat);
@@ -19,6 +28,7 @@ export default class UI {
     static updateDistance (distance) {
         const distanceContainer = document.querySelector('.distance-container');
         const distanceElem = document.createElement('p');
+        distanceElem.classList.add('dynamic');
         distanceElem.textContent = distance;
         distanceContainer.appendChild(distanceElem);
     }
@@ -26,6 +36,7 @@ export default class UI {
     static updateDirection (message) {
         const distanceContainer = document.querySelector('.distance-container');
         const directionElem = document.createElement('p');
+        directionElem.classList.add('dynamic');
         directionElem.textContent = message;
         distanceContainer.appendChild(directionElem);
     }
@@ -33,6 +44,7 @@ export default class UI {
     static updateSpeed (data) {
         const speedCont = document.querySelector('.speed-container');
         const speedElem = document.createElement('p');
+        speedElem.classList.add('dynamic');
         speedElem.textContent = `${Math.round(data).toLocaleString()} Km/h`;
 
         speedCont.appendChild(speedElem);
@@ -40,9 +52,11 @@ export default class UI {
     }
 
     static displayLocation (res) {  
-        lastKnownLoc = res;
+        // lastKnownLoc = res;
+        localStorage.setItem('lastKnownLocation', res);
         const locationContainer = document.querySelector('.location-container');
         const locationElem = document.createElement('p');
+        locationElem.classList.add('dynamic');
         locationElem.textContent = `The ISS is currently over ${res}`;
 
         locationContainer.appendChild(locationElem);
@@ -51,11 +65,13 @@ export default class UI {
     static displayLastKnownLocation () {
         const locationContainer = document.querySelector('.location-container');
         const locationElem = document.createElement('p');
+        locationElem.classList.add('dynamic');
         locationElem.textContent = 'The ISS is currently over an unidentifiable land mass or ocean.'
         const lastLocElem = document.createElement('p');
+        lastLocElem.classList.add('dynamic');
         locationContainer.appendChild(locationElem);
-        if (lastKnownLoc !== undefined) {
-            lastLocElem.textContent = `Last known location: ${lastKnownLoc}.`
+        if (localStorage.getItem('lastKnownLocation') !== null) {
+            lastLocElem.textContent = `Last known location: ${localStorage.getItem('lastKnownLocation')}.`
             locationContainer.appendChild(lastLocElem);
         }
     }
@@ -65,4 +81,4 @@ export default class UI {
     }
 }
 
-let lastKnownLoc;
+// let lastKnownLoc;
