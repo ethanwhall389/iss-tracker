@@ -15,13 +15,18 @@ export default class UI {
         latContainer.appendChild(lat);
         lonContainer.appendChild(lon);
     }
-}
-UI.updateIssCoordinates({
-    "latitude": "hehe",
-    "longitude": "haha"
-})
 
-UI.updateIssCoordinates({
-    "latitude": "-1.55555",
-    "longitude": "1.5432"
-});
+    static updateDistance (distance) {
+        const distanceContainer = document.querySelector('.distance-container');
+        const distanceElem = document.createElement('p');
+        distanceElem.textContent = distance;
+        distanceContainer.appendChild(distanceElem);
+    }
+
+    static updateDirection (message) {
+        const distanceContainer = document.querySelector('.distance-container');
+        const directionElem = document.createElement('p');
+        directionElem.textContent = message;
+        distanceContainer.appendChild(directionElem);
+    }
+}
