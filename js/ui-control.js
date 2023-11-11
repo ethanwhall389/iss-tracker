@@ -2,6 +2,18 @@
 // loop through all elements with that class and remove them
 
 export default class UI {
+    // static changeUnits (units) {
+    //     const distanceElem = document.querySelector('distance');
+    //     const speedElem = document.querySelector('speed');
+
+    //     if (units === 'miles') {
+    //         //convert from km to miles
+    //         distanceElem.textContent = Convert.kmToMi(units)
+    //     } else if (units === 'kilometers') {
+    //         //convert from miles to km.
+    //     }
+    // }
+    
     static clearPage () {
         const elements = document.querySelectorAll('.dynamic');
         elements.forEach( (elem) => {
@@ -28,8 +40,9 @@ export default class UI {
     static updateDistance (distance) {
         const distanceContainer = document.querySelector('.distance-container');
         const distanceElem = document.createElement('p');
-        distanceElem.classList.add('dynamic');
-        distanceElem.textContent = distance;
+        distanceElem.classList.add('dynamic', 'distance');
+        console.log(typeof(distance));
+        distanceElem.textContent = distance.toLocaleString();
         distanceContainer.appendChild(distanceElem);
     }
 
@@ -44,8 +57,8 @@ export default class UI {
     static updateSpeed (data) {
         const speedCont = document.querySelector('.speed-container');
         const speedElem = document.createElement('p');
-        speedElem.classList.add('dynamic');
-        speedElem.textContent = `${Math.round(data).toLocaleString()} Km/h`;
+        speedElem.classList.add('dynamic', 'speed');
+        speedElem.textContent = data;
 
         speedCont.appendChild(speedElem);
 

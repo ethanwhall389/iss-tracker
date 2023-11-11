@@ -3,6 +3,16 @@ import Calculate from "./calc-distance.js";
 import UI from "./ui-control.js";
 import Convert from "./convert-units.js";
 
+const unitSelector = document.querySelector('#select-units');
+let units = unitSelector.value;
+unitSelector.addEventListener('change', () => {
+    units = unitSelector.value;
+    UI.clearPage();
+    loadPage();
+    console.log(units);
+})
+
+
 document.addEventListener('DOMContentLoaded', () => {
     loadPage();
 });
@@ -12,6 +22,7 @@ bttnRefresh.addEventListener('click', () => {
     UI.clearPage();
     loadPage();
 });
+
 
 function loadPage () {
     fetchIss ()
@@ -24,13 +35,19 @@ function loadInfo (data) {
     UI.updateIssCoordinates(data);
     
     const distance = Calculate.calcDistance(data.latitude, data.longitude, 34.885740, -82.407650);
-    const distanceKm = Convert.toKm(distance);
-    UI.updateDistance(distanceKm);
+    console.log(typeof(distance.num));
+    const distanceConverted = Convert.convertDistance(distance, units);
+    console.log(typeof(distanceConverted));
+    console.log(`converted: ${distanceConverted}`);
+    // console.log(`distance before conversion: ${distanceToKm}`);
+    // console.log(`distance after: ${distanceConverted}`);
+    UI.updateDistance(distanceConverted);
     
     const direction = Calculate.calcDirection(-82.407650, data.longitude);
     UI.updateDirection(direction);
     
-    UI.updateSpeed(data.velocity);
+    const convertedSpeed = Convert.convertSpeed(data, units);
+    UI.updateSpeed(convertedSpeed);
 
     fetchGeocode(data.latitude, data.longitude)
     .then( (result) => {

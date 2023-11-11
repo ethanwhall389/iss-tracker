@@ -1,3 +1,5 @@
+import Convert from "./convert-units.js";
+
 export default class Calculate {
     static calcDistance (latitude1, longitude1, latitude2, longitude2) {
         const earthRadius = 6371e3; //meters
@@ -41,8 +43,14 @@ export default class Calculate {
         const metersRounded = Math.round(meters);
     
         console.log(`meters: ${meters}`);
-    
-        return metersRounded;
+
+        const distance = {
+            "num": Convert.metToKm(metersRounded),
+            "units": 'kilometers'
+        }
+
+        return distance;
+        // return Convert.metToKm(metersRounded);
         
         // console.log(`Distance in meters: ${meters}`);
         // console.log(`Distance in Km: ${convertToKm(meters)}`)
