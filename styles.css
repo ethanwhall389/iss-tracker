@@ -48,6 +48,22 @@ header h1 {
     margin: 20px 15px 30px 15px;
 }
 
+.animation-cont {
+    border: 3px solid green;
+    height: 500vh;
+}
+
+canvas {
+    border: 3px solid red;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    max-height: 100vh;
+    max-width: 100vw;
+    transform: translate(-50%, -50%);
+    margin-top: 20px;
+}
+
 .tracker-container {
     width: 100%;
     max-width: 1000px;
