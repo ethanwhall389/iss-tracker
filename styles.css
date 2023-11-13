@@ -49,12 +49,10 @@ header h1 {
 }
 
 .animation-cont {
-    border: 3px solid green;
     height: 500vh;
 }
 
 canvas {
-    border: 3px solid red;
     position: fixed;
     left: 50%;
     top: 50%;
@@ -65,6 +63,7 @@ canvas {
 }
 
 .tracker-container {
+    z-index: 100;
     width: 100%;
     max-width: 1000px;
     min-height: 650px;
