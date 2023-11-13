@@ -42,7 +42,7 @@ export default class UI {
         const distanceElem = document.createElement('p');
         distanceElem.classList.add('dynamic', 'distance');
         console.log(typeof(distance));
-        distanceElem.textContent = distance.toLocaleString();
+        distanceElem.textContent = `—${distance.toLocaleString()}`;
         distanceContainer.appendChild(distanceElem);
     }
 
@@ -50,7 +50,7 @@ export default class UI {
         const distanceContainer = document.querySelector('.distance-container');
         const directionElem = document.createElement('p');
         directionElem.classList.add('dynamic');
-        directionElem.textContent = message;
+        directionElem.textContent = `—${message}`;
         distanceContainer.appendChild(directionElem);
     }
 

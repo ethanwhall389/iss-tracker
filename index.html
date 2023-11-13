@@ -4,36 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/main.js" type="module" defer></script>
+    <link rel="stylesheet" href="styles.css">
     <title>ISS Tracker</title>
 </head>
 <body>
-    <h1>Track the International Space Station</h1>
-    <div class="tracker-container">
-        <div class="coordinates-container">
-            <h3>Current Coordinates:</h3>
-            <div class="lat-container">
-                <p>Latitude:</p>
+    <div class="main-cont">
+        <header>
+            <h1>Track the International Space Station</h1>
+        </header>
+        <div class="tracker-container">
+            <div class="coordinates-container info-cont">
+                <h3>Current Coordinates:</h3>
+                <div class="lat-container">
+                    <p class="coordinates-heading">Latitude:</p>
+                </div>
+                <div class="lon-container">
+                    <p class="coordinates-heading">Longitude:</p>
+                </div>
+                <!-- Inject p here -->
             </div>
-            <div class="lon-container">
-                <p>Longitude:</p>
+            <div class="location-container info-cont">
+                <h3>Current location:</h3>
             </div>
-            <!-- Inject p here -->
+            <div class="speed-container info-cont">
+                <h3>Speed:</h3>
+            </div>
+            <div class="distance-container info-cont">
+                <h3>Distance from your location:</h3>
+                <!-- Inject p here -->
+            </div>
+            <div class="options-cont info-cont">
+                <button id="bttn-refresh" class="option">Refresh Status</button>
+                <select name="select-units" class="option" id="select-units">
+                    <option value="kilometers">Kilometers</option>
+                    <option value="miles">Miles</option>
+                </select>
+            </div>
         </div>
-        <div class="location-container">
-            <h3>Current location:</h3>
-        </div>
-        <div class="speed-container">
-            <h3>Speed:</h3>
-        </div>
-        <div class="distance-container">
-            <h3>Distance from your location:</h3>
-            <!-- Inject p here -->
-        </div>
-        <button id="bttn-refresh">Refresh Status</button>
-        <select name="select-units" id="select-units">
-            <option value="kilometers">Kilometers</option>
-            <option value="miles">Miles</option>
-        </select>
+    </div>
+    <div class="bottom-image-cont">
+        <footer>
+            <p>ISS 3D model by <a href="https://sketchfab.com/3d-models/iss-stationary-7ee2fccce9c3476e94d05ca3e61250c7" target="_blank">69 max</a></p>
+            <p>Earth image by <a href="https://www.vecteezy.com/free-photos" target="_blank">Vecteezy</a></p>
+        </footer>
     </div>
 </body>
 </html>
