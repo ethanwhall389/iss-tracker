@@ -69,8 +69,8 @@ export default class Calculate {
             time = usKilometers / speedNum;
         }
 
-        const convertToSeconds = time*60;
-        return Math.round(convertToSeconds);
+        const convertToMin = time*60;
+        return Math.round(convertToMin);
     }
     
 

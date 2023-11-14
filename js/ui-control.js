@@ -48,7 +48,7 @@ export default class UI {
 
         const speedMetaElem = document.createElement('p');
         speedMetaElem.classList.add('dynamic', 'speed');
-        speedMetaElem.textContent = `That means it could fly accross the United States in about ${speedMetaphor} seconds!`;
+        speedMetaElem.textContent = `That means it could fly accross the United States in about ${speedMetaphor} minutes!`;
 
 
         speedCont.append(speedElem, speedMetaElem);
