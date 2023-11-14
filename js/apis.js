@@ -1,5 +1,5 @@
 function fetchIss () {
-    return fetch ('https://api.wheretheiss.at/v1/satellites/25544')
+    return fetch ('https://api.wheretheiss.at/v1/satellites/25544&units=kilometers')
       .then ( (result) => {
         return result.json();
       })
