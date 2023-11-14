@@ -68,6 +68,30 @@ export default class Calculate {
             return 'The ISS is currently moving towards your location'
         }
     }
+
+    static calcSpeedMetaphor (speed, units) {
+        const usMiles = 2742;
+        const usKilometers = usMiles * 1.60934;
+        let time;
+        let speedStr = speed;
+        // Remove non-numeric characters using a regular expression
+        speedStr = speedStr.replace(/[^\d.]/g, '');
+        const speedNum = parseFloat(speedStr);
+
+        if (units === 'miles') {
+            time = usMiles / speedNum;
+        } else if (units === 'kilometers') {
+            time = usKilometers / speedNum;
+        }
+        console.log(usKilometers);
+        console.log(speedNum);
+        console.log(units);
+        console.log(`time: ${time}`);
+
+        const convertToSeconds = time*60;
+        console.log(convertToSeconds);
+        return Math.round(convertToSeconds);
+    }
     
 
 }

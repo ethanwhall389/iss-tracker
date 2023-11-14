@@ -1,5 +1,5 @@
 import { fetchIss, fetchGeocode } from "./apis.js";
-import Calculate from "./calc-distance.js";
+import Calculate from "./calc.js";
 import UI from "./ui-control.js";
 import Convert from "./convert-units.js";
 
@@ -47,7 +47,8 @@ function loadInfo (data) {
     UI.updateDirection(direction);
     
     const convertedSpeed = Convert.convertSpeed(data, units);
-    UI.updateSpeed(convertedSpeed);
+    const speedMetaphor = Calculate.calcSpeedMetaphor(convertedSpeed, units);
+    UI.updateSpeed(convertedSpeed, speedMetaphor);
 
     fetchGeocode(data.latitude, data.longitude)
     .then( (result) => {

@@ -54,13 +54,18 @@ export default class UI {
         distanceContainer.appendChild(directionElem);
     }
 
-    static updateSpeed (data) {
+    static updateSpeed (speed, speedMetaphor) {
         const speedCont = document.querySelector('.speed-container');
         const speedElem = document.createElement('p');
         speedElem.classList.add('dynamic', 'speed');
-        speedElem.textContent = data;
+        speedElem.textContent = speed;
 
-        speedCont.appendChild(speedElem);
+        const speedMetaElem = document.createElement('p');
+        speedMetaElem.classList.add('dynamic', 'speed');
+        speedMetaElem.textContent = `That means it could fly accross the United States in about ${speedMetaphor} seconds!`;
+
+
+        speedCont.append(speedElem, speedMetaElem);
 
     }
 
