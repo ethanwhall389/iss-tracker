@@ -35,7 +35,7 @@ export default class Convert {
         if (selectedUnits === 'miles' && data.units === 'miles') {
             return `${data.velocity} mi/hr`;
         } else if (selectedUnits === 'kilometers' && data.units === 'kilometers') {
-            return `${Math.round(data.velocity).toLocaleString()} Km/hr`;
+            return `${Math.round(data.velocity).toLocaleString()} km/hr`;
         } else {
             return `${this.kmToMi(data.velocity)} mi/hr`;
         }
