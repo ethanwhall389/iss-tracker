@@ -1,19 +1,4 @@
 export default class Convert {
-    
-    // static convert (number, previousNum, selectedUnits) {
-    //     if (selectedUnits === 'miles') {
-    //         if (this.kmToMi(number) !== number) {
-    //             return this.kmToMi(number);
-    //         }
-    //     } else if (selectedUnits === 'kilometers') {
-    //         if (this.metToKm(previousNum) === number) {
-    //             return number;
-    //         }
-    //         else {
-    //                 this.miToKm(number);
-    //             }
-    //     }
-    // }
 
     static convertDistance (distance, selectedUnits) {
         if (selectedUnits === 'miles') {
@@ -47,8 +32,6 @@ export default class Convert {
     }
 
     static kmToMi (km) {
-        console.log(km);
-        console.log(parseFloat(km));
         const rounded = Math.round(km * 0.62137);
         return rounded.toLocaleString();
     }

@@ -6,7 +6,6 @@ export default class Calculate {
 
         function toRadians (deg) {
             const convert = deg * (Math.PI/180);
-            console.log(convert);
             return convert;
           }
     
@@ -26,23 +25,17 @@ export default class Calculate {
         const changeInLat = lat2 - lat1;
         const changeInLong = long2 - long1;
         
-        console.log(`Change in lat: ${changeInLat}`);
-        console.log(`Change in long: ${changeInLong}`);
-        
         //Haversine formula
         const a = Math.pow(Math.sin(changeInLat/2), 2) +
               Math.cos(lat1) * Math.cos(lat2) *
               Math.pow(Math.sin(changeInLong/2), 2);
-        console.log('a: ' + a);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        console.log(`C: ${c}`);
         
         //distance in meters
         const meters = earthRadius * c;
     
         const metersRounded = Math.round(meters);
     
-        console.log(`meters: ${meters}`);
 
         const distance = {
             "num": Convert.metToKm(metersRounded),
@@ -50,21 +43,13 @@ export default class Calculate {
         }
 
         return distance;
-        // return Convert.metToKm(metersRounded);
-        
-        // console.log(`Distance in meters: ${meters}`);
-        // console.log(`Distance in Km: ${convertToKm(meters)}`)
-        // console.log(`Distance in Mi: ${convertToMiles(meters)}`)
-        // console.log(`Distance in Km rounded: ${Math.round(convertToKm(meters))}`)
     }
 
     static calcDirection (userLon, issLon) {
         const diff = userLon - issLon;
         if (diff < 0 && diff > -180) {
-            console.log('moving away');
             return 'The ISS is currently moving away from your location.'
         } else if (diff < -180 || diff < 180 && diff > 0) {
-            console.log('moving towards');
             return 'The ISS is currently moving towards your location'
         }
     }
@@ -83,13 +68,8 @@ export default class Calculate {
         } else if (units === 'kilometers') {
             time = usKilometers / speedNum;
         }
-        console.log(usKilometers);
-        console.log(speedNum);
-        console.log(units);
-        console.log(`time: ${time}`);
 
         const convertToSeconds = time*60;
-        console.log(convertToSeconds);
         return Math.round(convertToSeconds);
     }
     

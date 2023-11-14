@@ -9,7 +9,6 @@ unitSelector.addEventListener('change', () => {
     units = unitSelector.value;
     UI.clearPage();
     loadPage();
-    console.log(units);
 })
 
 
@@ -35,12 +34,7 @@ function loadInfo (data) {
     UI.updateIssCoordinates(data);
     
     const distance = Calculate.calcDistance(data.latitude, data.longitude, 34.885740, -82.407650);
-    console.log(typeof(distance.num));
     const distanceConverted = Convert.convertDistance(distance, units);
-    console.log(typeof(distanceConverted));
-    console.log(`converted: ${distanceConverted}`);
-    // console.log(`distance before conversion: ${distanceToKm}`);
-    // console.log(`distance after: ${distanceConverted}`);
     UI.updateDistance(distanceConverted);
     
     const direction = Calculate.calcDirection(-82.407650, data.longitude);
@@ -53,10 +47,8 @@ function loadInfo (data) {
     fetchGeocode(data.latitude, data.longitude)
     .then( (result) => {
         UI.displayLocation(result.address.country);
-        console.log(result);
     })
     .catch( (err) => {
         UI.displayLastKnownLocation();
-        //display last known country.
     })
 }
