@@ -199,3 +199,17 @@ footer p {
     margin: 0;
     padding: 0;
 }
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .tracker-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer p, footer a {
+        font-size: 0.7rem;
+    }
+}
