@@ -9,7 +9,7 @@ function getCurrentFrame (index) {
 }
 
 function preloadImages () {
-    for (let i=1; i<numOfFrames; i++) {
+    for (let i=0; i<numOfFrames; i++) {
         const img = new Image();
         img.src = getCurrentFrame(i);
     }
@@ -17,9 +17,9 @@ function preloadImages () {
 
 
 const img = new Image();
-img.src = getCurrentFrame(1);
-canvas.width=1920;
-canvas.height=1080;
+img.src = getCurrentFrame(0);
+canvas.width=1280;
+canvas.height=720;
 
 img.onload = function() {
     context.drawImage(img, 0, 0);
@@ -43,7 +43,7 @@ window.addEventListener('scroll', () => {
       Math.ceil(scrollFraction * numOfFrames)
     );
     
-    requestAnimationFrame(() => updateImage(frameIndex + 1));
+    requestAnimationFrame(() => updateImage(frameIndex));
   });
 
 preloadImages();
