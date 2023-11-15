@@ -212,4 +212,8 @@ footer p {
     footer p, footer a {
         font-size: 0.7rem;
     }
+
+    .main-cont {
+        background: black;
+    }
 }

@@ -3,9 +3,29 @@ const canvas = document.querySelector('canvas');
 const context = canvas.getContext("2d");
 const issCont = document.querySelector('canvas');
 const numOfFrames = 150;
+let issAnimPath;
+
+
+function handleScreenSize () {
+    if (window.innerWidth < 600) {
+        issAnimPath = './media/iss-anim-sequence/jpg/';
+        return 'less';
+    } else {
+        issAnimPath = './media/iss-anim-sequence/png/'
+        return 'greater';
+    }
+}
+
+window.addEventListener('resize', handleScreenSize);
+
 
 function getCurrentFrame (index) {
-    return `./media/iss-anim-sequence/${index.toString().padStart(4, '0')}.png`;
+    handleScreenSize();
+    if (handleScreenSize() === 'less') {
+        return issAnimPath + index.toString().padStart(4, '0') + '.jpg';
+    } else {
+        return issAnimPath + index.toString().padStart(4, '0') + '.png';
+    }
 }
 
 function preloadImages () {
@@ -28,7 +48,9 @@ img.onload = function() {
 
 
 function updateImage (frame) {
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    if (handleScreenSize() === 'greater') {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }
     img.src = getCurrentFrame(frame);
     context.drawImage(img, 0, 0);
 }
