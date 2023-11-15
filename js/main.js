@@ -1,4 +1,4 @@
-import { fetchIss, fetchGeocode } from "./apis.js";
+import { fetchIss, fetchGeocode, getUserLocation } from "./apis.js";
 import Calculate from "./calc.js";
 import UI from "./ui-control.js";
 import Convert from "./convert-units.js";
@@ -22,29 +22,43 @@ bttnRefresh.addEventListener('click', () => {
     loadPage();
 });
 
+// function fetchUserLocation (issData) {
+//     getUserLocation()
+//             .then( (location) => {
+//                 loadInfo(issData, location);
+//             })
+//             .catch( (error) => {
+//                 alert('Please allow location use');
+//             })
+// }
+
 
 function loadPage () {
     fetchIss ()
     .then( (result) => {
-        loadInfo(result)
+        // fetchUserLocation(result);
+        getUserLocation()
+            .then( (location) => {
+                loadInfo(result, location);
+            })
     })
 }
 
-function loadInfo (data) {
-    UI.updateIssCoordinates(data);
-    
-    const distance = Calculate.calcDistance(data.latitude, data.longitude, 34.885740, -82.407650);
+function loadInfo (issData, userLocation) {
+    UI.updateIssCoordinates(issData);
+
+    const distance = Calculate.calcDistance(issData.latitude, issData.longitude, userLocation.lat, userLocation.lon);
     const distanceConverted = Convert.convertDistance(distance, units);
     UI.updateDistance(distanceConverted);
     
-    const direction = Calculate.calcDirection(-82.407650, data.longitude);
+    const direction = Calculate.calcDirection(-82.407650, issData.longitude);
     UI.updateDirection(direction);
     
-    const convertedSpeed = Convert.convertSpeed(data, units);
+    const convertedSpeed = Convert.convertSpeed(issData, units);
     const speedMetaphor = Calculate.calcSpeedMetaphor(convertedSpeed, units);
     UI.updateSpeed(convertedSpeed, speedMetaphor);
 
-    fetchGeocode(data.latitude, data.longitude)
+    fetchGeocode(issData.latitude, issData.longitude)
     .then( (result) => {
         UI.displayLocation(result.address.country);
     })

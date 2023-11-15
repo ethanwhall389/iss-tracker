@@ -5,16 +5,40 @@ function fetchIss () {
       })
     };
 
-    function fetchGeocode (lat, lon) {
-      return fetch (`https://geocode.maps.co/reverse?lat=${lat}&lon=${lon}&format=json`)
-        .then ( (result) => {
+function fetchGeocode (lat, lon) {
+  return fetch (`https://geocode.maps.co/reverse?lat=${lat}&lon=${lon}&format=json`)
+    .then ( (result) => {
 
-          return result.json();
-        })
-        .catch ( (err) => {
-          console.log('error!!' + err);
-        })
-    }
+      return result.json();
+    })
+    .catch ( (err) => {
+      console.log('error!!' + err);
+    })
+}
 
-    export { fetchIss, fetchGeocode}
+// function getUserLocation (callback) {
+//   navigator.geolocation.getCurrentPosition( (position) => {
+//     const location = {
+//       'lat': position.coords.latitude,
+//       'lon': position.coords.longitude
+//     }
+//     callback(location);
+//   });
+// }
+
+function getUserLocation () {
+  return new Promise ((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition( (position) => {
+      const location = {
+        'lat': position.coords.latitude,
+        'lon': position.coords.longitude
+      }
+      resolve(location);
+    }, (error) => {
+      reject(error);
+    })
+  })
+}
+
+    export { fetchIss, fetchGeocode, getUserLocation}
 
