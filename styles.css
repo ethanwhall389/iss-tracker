@@ -88,6 +88,7 @@ header h1 {
     margin: 100px 15px 30px 15px;
     opacity: 0;
     transform: translateY(20px);
+    z-index: 100;
 }
 
 
