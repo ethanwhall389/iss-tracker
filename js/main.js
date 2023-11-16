@@ -62,6 +62,7 @@ function loadInfo (issData, userLocation) {
     const speedMetaphor = Calculate.calcSpeedMetaphor(convertedSpeed, units);
     UI.updateSpeed(convertedSpeed, speedMetaphor);
 
+
     fetchGeocode(issData.latitude, issData.longitude)
     .then( (result) => {
         UI.displayLocation(result.address.country);

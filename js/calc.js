@@ -75,9 +75,10 @@ export default class Calculate {
 
     static calcDate () {
         const date = new Date();
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-        const time = `${hours}:${minutes}`
+        const time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+        // const hours = date.getHours();
+        // const minutes = date.getMinutes();
+        // const time = `${hours}:${minutes}`
         return time;
     }
     
