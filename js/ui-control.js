@@ -38,7 +38,7 @@ export default class UI {
         const distanceContainer = document.querySelector('.distance-container');
         const directionElem = document.createElement('p');
         directionElem.classList.add('dynamic');
-        directionElem.textContent = `—${message}.`;
+        directionElem.textContent = `—${message}`;
         distanceContainer.appendChild(directionElem);
     }
 

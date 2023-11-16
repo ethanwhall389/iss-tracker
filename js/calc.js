@@ -50,7 +50,7 @@ export default class Calculate {
         if (diff < 0 && diff > -180) {
             return 'The ISS is currently moving away from your location.'
         } else if (diff < -180 || diff < 180 && diff > 0) {
-            return 'The ISS is currently moving towards your location'
+            return 'The ISS is currently moving towards your location.'
         }
     }
 
