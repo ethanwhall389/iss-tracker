@@ -1,3 +1,5 @@
+import Calculate from "./calc.js";
+
 export default class UI {
    
     
@@ -58,6 +60,9 @@ export default class UI {
     static displayLocation (res) {  
         // lastKnownLoc = res;
         localStorage.setItem('lastKnownLocation', res);
+        localStorage.setItem('lastKnownTime', Calculate.calcDate());
+        
+
         const locationContainer = document.querySelector('.location-container');
         const locationElem = document.createElement('p');
         locationElem.classList.add('dynamic');
@@ -68,15 +73,24 @@ export default class UI {
 
     static displayLastKnownLocation () {
         const locationContainer = document.querySelector('.location-container');
+        
         const locationElem = document.createElement('p');
         locationElem.classList.add('dynamic');
         locationElem.textContent = 'The ISS is currently over an unidentifiable land mass or ocean.'
+        locationContainer.appendChild(locationElem);
+        
         const lastLocElem = document.createElement('p');
         lastLocElem.classList.add('dynamic');
-        locationContainer.appendChild(locationElem);
         if (localStorage.getItem('lastKnownLocation') !== null) {
             lastLocElem.textContent = `Last known location: ${localStorage.getItem('lastKnownLocation')}.`
             locationContainer.appendChild(lastLocElem);
+        }
+
+        const lastTimeElem = document.createElement('p');
+        lastTimeElem.classList.add('dynamic');
+        if (localStorage.getItem('lastKnownTime') !== null) {
+            lastTimeElem.textContent = `Recorded at: ${localStorage.getItem('lastKnownTime')}.`
+            locationContainer.appendChild(lastTimeElem);
         }
     }
 

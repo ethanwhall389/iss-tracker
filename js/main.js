@@ -66,7 +66,7 @@ function loadInfo (issData, userLocation) {
     .then( (result) => {
         UI.displayLocation(result.address.country);
     })
-    .catch( (err) => {
+    .catch( () => {
         UI.displayLastKnownLocation();
     })
 }
