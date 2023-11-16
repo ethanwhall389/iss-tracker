@@ -94,9 +94,10 @@ export default class UI {
         }
     }
 
-    static displayLocationError () {
-        
-    }
+    // static showLoading () {
+    //     const loadingElem = document.createElement('p');
+    //     loadingElem.textContent = 'Loading...';
+    // }
 }
 
 // let lastKnownLoc;

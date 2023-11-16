@@ -22,16 +22,6 @@ bttnRefresh.addEventListener('click', () => {
     loadPage();
 });
 
-// function fetchUserLocation (issData) {
-//     getUserLocation()
-//             .then( (location) => {
-//                 loadInfo(issData, location);
-//             })
-//             .catch( (error) => {
-//                 alert('Please allow location use');
-//             })
-// }
-
 
 function loadPage () {
     fetchIss ()

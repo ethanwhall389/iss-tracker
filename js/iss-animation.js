@@ -35,11 +35,18 @@ function preloadImages () {
     }
 }
 
+function showLoading () {
+    const message = 'Loading...';
+    context.fillText(message, 0, 0);
+}
+
 
 const img = new Image();
 img.src = getCurrentFrame(0);
 canvas.width=1280;
 canvas.height=720;
+
+document.addEventListener('DOMContentLoaded', showLoading);
 
 img.onload = function() {
     context.drawImage(img, 0, 0);
