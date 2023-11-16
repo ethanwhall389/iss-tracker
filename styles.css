@@ -110,7 +110,7 @@ canvas {
 .fade-in {
     opacity: 1;
     transition: opacity 1.5s;
-    transition-delay: 1s;
+    transition-delay: 0.5s;
 }
 
 .fade-up {
@@ -205,6 +205,10 @@ footer p {
 
 
 @media only screen and (max-width: 600px) {
+    canvas {
+        top: 55%;
+    }
+    
     .tracker-container {
         display: flex;
         flex-direction: column;
