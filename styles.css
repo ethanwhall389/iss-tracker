@@ -93,7 +93,7 @@ header h1 {
 
 
 .animation-cont {
-    height: 500vh;
+    height: 400vh;
 }
 
 canvas {
@@ -208,6 +208,10 @@ footer p {
     .tracker-container {
         display: flex;
         flex-direction: column;
+    }
+
+    .animation-cont {
+        height: 200vh;
     }
 
     footer p, footer a {
