@@ -76,7 +76,7 @@ export default class UI {
         
         const locationElem = document.createElement('p');
         locationElem.classList.add('dynamic');
-        locationElem.textContent = 'The ISS is currently over an unidentifiable land mass or ocean.'
+        locationElem.textContent = 'The ISS is currently over an unidentifiable land mass or ocean. Check back shortly.'
         locationContainer.appendChild(locationElem);
         
         const lastLocElem = document.createElement('p');
