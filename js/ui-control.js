@@ -50,7 +50,7 @@ export default class UI {
 
         const speedMetaElem = document.createElement('p');
         speedMetaElem.classList.add('dynamic', 'speed');
-        speedMetaElem.textContent = `That means it could fly accross the United States in about ${speedMetaphor} minutes!`;
+        speedMetaElem.textContent = `That means it could fly across the United States in about ${speedMetaphor} minutes!`;
 
 
         speedCont.append(speedElem, speedMetaElem);
@@ -93,11 +93,4 @@ export default class UI {
             locationContainer.appendChild(lastTimeElem);
         }
     }
-
-    // static showLoading () {
-    //     const loadingElem = document.createElement('p');
-    //     loadingElem.textContent = 'Loading...';
-    // }
 }
-
-// let lastKnownLoc;
