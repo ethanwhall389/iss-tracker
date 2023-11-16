@@ -55,7 +55,7 @@ function loadInfo (issData, userLocation) {
     const distanceConverted = Convert.convertDistance(distance, units);
     UI.updateDistance(distanceConverted);
     
-    const direction = Calculate.calcDirection(-82.407650, issData.longitude);
+    const direction = Calculate.calcDirection(userLocation.lon, issData.longitude);
     UI.updateDirection(direction);
     
     const convertedSpeed = Convert.convertSpeed(issData, units);
