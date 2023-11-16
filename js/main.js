@@ -41,6 +41,10 @@ function loadPage () {
             .then( (location) => {
                 loadInfo(result, location);
             })
+            .catch( (error) => {
+                alert('For the ISS Tracker to work properly, please allow it access to your location.')
+                UI.updateDistance('Please refresh and allow location access for the ISS Tracker to function properly.')
+            })
     })
 }
 
