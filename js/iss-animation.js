@@ -1,5 +1,7 @@
 const html = document.documentElement;
 const canvas = document.querySelector('canvas');
+canvas.width=1280;
+canvas.height=720;
 const context = canvas.getContext("2d");
 const issCont = document.querySelector('canvas');
 const numOfFrames = 150;
@@ -36,19 +38,31 @@ function preloadImages () {
 }
 
 function showLoading () {
-    const message = 'Loading...';
-    context.fillText(message, 0, 0);
+    const message = document.createElement('p');
+    message.setAttribute('id', 'loadingMessage');
+    message.textContent = 'Loading...'
+    const animCont = document.querySelector('.animation-cont');
+    animCont.appendChild(message);
+    // context.fillText(message, 0, 0);
 }
 
+function removeLoading () {
+    const message = document.querySelector('#loadingMessage');
+    if (message != null) {
+        message.remove();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    showLoading();
+});
 
 const img = new Image();
 img.src = getCurrentFrame(0);
-canvas.width=1280;
-canvas.height=720;
 
-document.addEventListener('DOMContentLoaded', showLoading);
 
 img.onload = function() {
+    removeLoading();
     context.drawImage(img, 0, 0);
     issCont.classList.add('fade-in');
 }

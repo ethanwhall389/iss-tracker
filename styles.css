@@ -91,6 +91,10 @@ header h1 {
     z-index: 100;
 }
 
+#loadingMessage {
+    color: #c0c0c0;
+}
+
 
 .animation-cont {
     height: 400vh;
