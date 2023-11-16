@@ -30,7 +30,7 @@ export default class UI {
         const distanceContainer = document.querySelector('.distance-container');
         const distanceElem = document.createElement('p');
         distanceElem.classList.add('dynamic', 'distance');
-        distanceElem.textContent = `—${distance.toLocaleString()}`;
+        distanceElem.textContent = `—${distance.toLocaleString()}.`;
         distanceContainer.appendChild(distanceElem);
     }
 
@@ -38,7 +38,7 @@ export default class UI {
         const distanceContainer = document.querySelector('.distance-container');
         const directionElem = document.createElement('p');
         directionElem.classList.add('dynamic');
-        directionElem.textContent = `—${message}`;
+        directionElem.textContent = `—${message}.`;
         distanceContainer.appendChild(directionElem);
     }
 
@@ -66,7 +66,7 @@ export default class UI {
         const locationContainer = document.querySelector('.location-container');
         const locationElem = document.createElement('p');
         locationElem.classList.add('dynamic');
-        locationElem.textContent = `The ISS is currently over ${res}`;
+        locationElem.textContent = `The ISS is currently over ${res}.`;
 
         locationContainer.appendChild(locationElem);
     }
@@ -76,7 +76,7 @@ export default class UI {
         
         const locationElem = document.createElement('p');
         locationElem.classList.add('dynamic');
-        locationElem.textContent = 'The ISS is currently over an unidentifiable land mass or ocean. Check back shortly.'
+        locationElem.textContent = 'The ISS is currently over an ocean or unidentifiable land mass. Check back shortly.'
         locationContainer.appendChild(locationElem);
         
         const lastLocElem = document.createElement('p');
